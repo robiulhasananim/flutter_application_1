@@ -29,7 +29,77 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Text("Welcome", style: TextStyle(fontSize: 50),),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Hello World",
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            Text(
+              "This is another text",
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => counterApp()),
+                );
+              },
+              child: Text("Press this"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class counterApp extends StatefulWidget {
+  const counterApp({super.key});
+
+  @override
+  State<counterApp> createState() => _counterAppState();
+}
+
+class _counterAppState extends State<counterApp> {
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Counter App"), backgroundColor: Colors.blue),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Counter: $count",
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  count++;
+                });
+              },
+              child: Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
     );
   }
